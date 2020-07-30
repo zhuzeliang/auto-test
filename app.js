@@ -44,7 +44,8 @@ app
       return pathToRegexp([
         '/api/u/login',
         '/api/u/register',
-        '/api/wallpaper'
+        '/api/wallpaper',
+        '/api/upload'
       ]).test(ctx.path)
     }
     return true

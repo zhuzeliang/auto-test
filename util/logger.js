@@ -27,6 +27,7 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = koaPinoLogger({
   name: 'auto-test',
-  level: process.env.NODE_ENV === 'test' ? 'silent' : 'info',
+  // level: process.env.NODE_ENV === 'test' ? 'silent' : 'info',
+  level: 'silent',
   genReqId: req => req.headers['x-request-id'] || uuid.v4()
 }, multistream(streams))
