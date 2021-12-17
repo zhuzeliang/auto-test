@@ -1,5 +1,6 @@
 'use strict'
 
 module.exports = {
-  util: require('./util')
+  util: require('./util'),
+  video: require('./video')
 }

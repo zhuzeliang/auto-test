@@ -26,6 +26,10 @@ onerror(app)
 validate(app)
 
 app
+  .use(cors({
+    credentials: true,
+    maxAge: 2592000
+  }))
   .use(middleware.ipFilter)
   .use(favicon(path.join(__dirname, '/public/images/icon.png')))
   .use(serve('/dist', './dist'))
@@ -33,10 +37,6 @@ app
   .use(serve('/upload', path.resolve(__dirname, 'config', uploadConf.dir)))
   .use(logger)
   .use(middleware.util)
-  .use(cors({
-    credentials: true,
-    maxAge: 2592000
-  }))
   .use(koaJwt({
     secret: jwtSecret
   }).unless((ctx) => {
@@ -45,7 +45,9 @@ app
         '/api/u/login',
         '/api/u/register',
         '/api/wallpaper',
-        '/api/upload'
+        '/api/upload',
+        '/api/video/list',
+        '/api/video/toImg'
       ]).test(ctx.path)
     }
     return true
